@@ -20,56 +20,70 @@ import StatisticsCard from "../../components/Common/StatisticsCard";
 import Dropzone from "react-dropzone";
 const dataItems = [
   {
-    label: "Sample 1",
+    label: "1-10% churn rate",
     name: "abc",
     age: "22",
     phone: "1234567890",
     value: 30000,
   },
   {
-    label: "Sample 2",
+    label: "11-20% churn rate",
     name: "abcd",
     age: "23",
     phone: "1243567890",
     value: 40000,
   },
   {
-    label: "Sample 3",
+    label: "21-30% churn rate",
     name: "abdc",
     age: "24",
     phone: "1235467890",
     value: 33000,
   },
   {
-    label: "Sample 4",
+    label: "31-40% churn rate",
     name: "asbc",
     age: "21",
     phone: "1245367890",
     value: 35000,
   },
   {
-    label: "Sample 5",
+    label: "41-50% churn rate",
     name: "abcf",
     age: "22",
     phone: "1235674890",
     value: 36000,
   },
   {
-    label: "Sample 6",
+    label: "51-60% churn rate",
     name: "abc",
     age: "22",
     phone: "1235678940",
     value: 380000,
   },
   {
-    label: "Sample 7",
+    label: "61-70% churn rate",
     name: "abcz",
     age: "26",
     phone: "1234567890",
     value: 40000,
   },
   {
-    label: "Sample 8",
+    label: "71-80% churn rate",
+    name: "zabc",
+    age: "27",
+    phone: "1234678950",
+    value: 30000,
+  },
+  {
+    label: "81-90% churn rate",
+    name: "zabc",
+    age: "27",
+    phone: "1234678950",
+    value: 30000,
+  },
+  {
+    label: "91-100% churn rate",
     name: "zabc",
     age: "27",
     phone: "1234678950",
@@ -94,27 +108,26 @@ const DatabaseReport = () => {
       {" "}
       {uplaod && (
         <ModalUpload>
-          <p className="close" onClick={handleUpload}>
+          <p className='close' onClick={handleUpload}>
             X
           </p>
 
           <Dropzone onDrop={(acceptedFiles) => console.log(acceptedFiles)}>
             {({ getRootProps, getInputProps }) => (
-              <section className="modal">
+              <section className='modal'>
                 <h2>Upload .csv file</h2>
                 <div
-                  className="file-input"
+                  className='file-input'
                   onClick={handleUploadSuccess}
-                  // un-comment this line for normal function {...getRootProps()}
-                >
+                  {...getRootProps()}>
                   <PaperDownload />
-                  <input {...getInputProps()} />
-                  <p className="text">Drag &amp; Drop your file here</p>
-                  <p className="text2">
+                  <input {...getInputProps()} accept='.csv' />
+                  <p className='text'>Drag &amp; Drop your file here</p>
+                  <p className='text2'>
                     or <span>Select file here</span>
                   </p>
                 </div>
-                <p className="footer-text" onClick={handleDownload}>
+                <p className='footer-text' onClick={handleDownload}>
                   Download sample .csv file here
                 </p>
                 {download && (
@@ -129,14 +142,14 @@ const DatabaseReport = () => {
       )}
       {uploadSuccess && (
         <ModalUploadSuccess>
-          <p className="close" onClick={handleUploadSuccess}>
+          <p className='close' onClick={handleUploadSuccess}>
             X
           </p>
 
-          <section className="modal">
+          <section className='modal'>
             <BigTick />
             <h2>Upload Successful</h2>
-            <Link to="/reports/new">View report</Link>
+            <Link to='/reports/new'>View report</Link>
           </section>
         </ModalUploadSuccess>
       )}
@@ -145,21 +158,20 @@ const DatabaseReport = () => {
         <Welcome> Welcome to your Dashboard</Welcome>
         <SpaceBetween>
           <Buttons>
-            <ButtonPrimary to="/report" fontSize="20px" lineHeight="24px">
-              <ButtonChart className="reportIcon" />
+            <ButtonPrimary to='/report' fontSize='20px' lineHeight='24px'>
+              <ButtonChart className='reportIcon' />
               <p>Check churn from database</p>
             </ButtonPrimary>
             <ButtonSecondary
-              to=""
+              to=''
               onClick={handleUpload}
-              fontSize="18px"
-              lineHeight="21px"
-            >
-              <PaperUpload className="uploadIcon" />
+              fontSize='18px'
+              lineHeight='21px'>
+              <PaperUpload className='uploadIcon' />
               <p> Upload file</p>
             </ButtonSecondary>
           </Buttons>
-          <CalendarContainer to="/history">
+          <CalendarContainer to='/history'>
             <Calendar /> See History
           </CalendarContainer>
         </SpaceBetween>

@@ -30,27 +30,26 @@ const Dashboard = () => {
       {" "}
       {uplaod && (
         <ModalUpload>
-          <p className="close" onClick={handleUpload}>
+          <p className='close' onClick={handleUpload}>
             X
           </p>
 
           <Dropzone onDrop={(acceptedFiles) => console.log(acceptedFiles)}>
             {({ getRootProps, getInputProps }) => (
-              <section className="modal">
+              <section className='modal'>
                 <h2>Upload .csv file</h2>
                 <div
-                  className="file-input"
+                  className='file-input'
                   onClick={handleUploadSuccess}
-                  // un-comment this line for normal function {...getRootProps()}
-                >
+                  {...getRootProps()}>
                   <PaperDownload />
-                  <input {...getInputProps()} />
-                  <p className="text">Drag &amp; Drop your file here</p>
-                  <p className="text2">
+                  <input {...getInputProps()} accept='.csv' />
+                  <p className='text'>Drag &amp; Drop your file here</p>
+                  <p className='text2'>
                     or <span>Select file here</span>
                   </p>
                 </div>
-                <p className="footer-text" onClick={handleDownload}>
+                <p className='footer-text' onClick={handleDownload}>
                   Download sample .csv file here
                 </p>
                 {download && (
@@ -65,14 +64,14 @@ const Dashboard = () => {
       )}
       {uploadSuccess && (
         <ModalUploadSuccess>
-          <p className="close" onClick={handleUploadSuccess}>
+          <p className='close' onClick={handleUploadSuccess}>
             X
           </p>
 
-          <section className="modal">
+          <section className='modal'>
             <BigTick />
             <h2>Upload Successful</h2>
-            <Link to="/reports/new">View report</Link>
+            <Link to='/reports/new'>View report</Link>
           </section>
         </ModalUploadSuccess>
       )}
@@ -81,7 +80,7 @@ const Dashboard = () => {
           <Welcome>
             <Header>Get started with your analytics</Header>
             <Grid>
-              <ButtonW to="/reports/all">
+              <ButtonW to='/reports/all'>
                 <ButtonChart /> <p>Check churn from database</p>
               </ButtonW>
               <ButtonP onClick={handleUpload}>
